@@ -1,0 +1,44 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Terraform variables
+*.tfvars
+*.tfvars.json
+
+# Ignore Terraform crash logs
+crash.log
+
+# Java (Maven & Gradle)
+**/target/
+**/out/
+**/.gradle/
+**/build/
+!gradle-wrapper.jar
+
+# Eclipse & IntelliJ IDEA
+/.idea/
+/.vscode/
+/.classpath
+/.project
+/.settings/
+
+# Logs & Temp Files
+*.log
+*.tmp
+hs_err_pid*
+
+# Kubernetes manifests & config files
+kubeconfig
+k8s/*.yaml
+
+# Ignore Docker build artifacts
+*.dockerignore
+docker-compose.override.yml
+
+# Exclude IDE-specific files
+/.DS_Store
+Thumbs.db
+/.aws
