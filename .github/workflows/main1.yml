@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pwd
-        run: pwd && cp backend backend
+        run: pwd && cp ./backend backend
         
       - name: Debug - List Files
         run: ls -xlt
