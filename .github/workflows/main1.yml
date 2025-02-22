@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug - List Files
+        run: ls -R
       - name: Checkout code
         uses: actions/checkout@v3
 
