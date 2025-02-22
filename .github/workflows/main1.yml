@@ -9,16 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Copy folder
-        run: cp -r ./backend/sap-explorer ./backup/
-
-        
-      - name: Debug - List Files
-        run: ls -xlt
-        
+     
       - name: Checkout code
         uses: actions/checkout@v3
-
+        with:
+            fetch-depth: 0 
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
