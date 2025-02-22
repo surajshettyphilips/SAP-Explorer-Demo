@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Debug - List Files
-        run: pwd
+        run: ls -xlt
       - name: Checkout code
         uses: actions/checkout@v3
 
