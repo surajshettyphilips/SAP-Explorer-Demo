@@ -9,8 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: pwd
-        run: pwd && cp ./backend backend
+      - name: Copy folder
+        run: cp -r ./backend/sap-explorer ./backup/
+
         
       - name: Debug - List Files
         run: ls -xlt
