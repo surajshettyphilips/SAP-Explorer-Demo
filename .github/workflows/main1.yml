@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: pwd
+        run: pwd && cp backend backend
+        
       - name: Debug - List Files
         run: ls -xlt
         
@@ -23,7 +26,7 @@ jobs:
 
       - name: Build JAR
         run: |
-          cd $GITHUB_WORKSPACE/backend/sap-explorer
+          cd backend/sap-explorer
           mvn clean package -DskipTests
 
       - name: Configure AWS Credentials
