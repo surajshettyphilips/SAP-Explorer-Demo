@@ -1,0 +1,19 @@
+DO
+$$
+BEGIN
+  IF NOT EXISTS(
+      SELECT
+      FROM pg_user
+      WHERE usename = 'user1')
+  THEN
+    CREATE USER user1
+    WITH PASSWORD 'user1';
+  END IF;
+  CREATE SCHEMA IF NOT EXISTS sapschema;
+  ALTER SCHEMA sapschema
+  OWNER TO user1;
+  GRANT ALL PRIVILEGES ON SCHEMA sapschema TO user1;
+  GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA sapschema TO user1;
+  GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA sapschema TO user1;
+END
+$$;
