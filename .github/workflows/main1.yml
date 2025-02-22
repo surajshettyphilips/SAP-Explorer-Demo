@@ -20,7 +20,7 @@ jobs:
 
       - name: Build JAR
         run: |
-          cd backend/sap-explorer
+          cd ./backend/sap-explorer
           mvn clean package -DskipTests
 
       - name: Configure AWS Credentials
