@@ -15,7 +15,9 @@ jobs:
           path: my-repo
       
       - name: Verify Directory Structure
-        run: ls -R my-repo
+        run: |
+         ls -R my-repo
+         pwd
 
       - name: Set up JDK
         uses: actions/setup-java@v3
