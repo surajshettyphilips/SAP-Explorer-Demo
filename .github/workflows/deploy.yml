@@ -80,9 +80,9 @@ jobs:
           docker push 503561426655.dkr.ecr.eu-west-1.amazonaws.com/aws_ecr_demo_repo:sapexplorer
 
   
-      #- name: Apply Kubernetes Manifests
-      #  run: |
-      #    cd my-repo
-      #    ls -xlt
-      #    pwd
-      #    kubectl apply -f k8/
+      - name: Apply Kubernetes Manifests
+        run: |
+          cd my-repo
+          ls -xlt
+          pwd
+          kubectl apply -f k8/
