@@ -19,6 +19,8 @@ jobs:
       
       - name: Verify Directory Structure
         run: |
+         echo ${{ env.AWS_ACCESS_KEY_ID }}
+         echo ${{ secrets.AWS_ACCESS_KEY_ID }}
          ls -R my-repo
          pwd
          echo "===================================="
