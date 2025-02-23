@@ -66,16 +66,15 @@ jobs:
           aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
 
       - name: Build and Push Docker Image
+        env:
+          IMAGE_TAG: sapexplorer:latest
         run: |
           cd my-repo
           ls -xlt
           pwd
           cd backend/sap_explorer
-          docker build -t sap-explorer:latest .
-          docker images
-          echo ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
-          docker tag sap-explorer:latest ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:sap-explorer
-          docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:sap-explorer
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f docker/Dockerfile .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
   
       - name: Apply Kubernetes Manifests
