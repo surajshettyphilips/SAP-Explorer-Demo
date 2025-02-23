@@ -63,7 +63,7 @@ jobs:
         run: |
           echo ${{ env.AWS_ACCESS_KEY_ID }}
           echo ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ECR_URI }}
+          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
 
       - name: Build and Push Docker Image
         run: |
