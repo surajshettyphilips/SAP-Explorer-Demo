@@ -9,6 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: make directory 
+        run: |
+         mkdir /my-repo
+         pwd
       - name: Checkout code
         uses: actions/checkout@v4
         with:
