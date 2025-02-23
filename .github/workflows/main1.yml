@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          path: my-repo
+          path: /my-repo
       
       - name: Verify Directory Structure
         run: |
@@ -28,7 +28,7 @@ jobs:
 
       - name: Build JAR
         run: mvn clean package -DskipTests
-        working-directory: my-repo/backend/sap-explorer
+        working-directory: /my-repo/backend/sap-explorer
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
