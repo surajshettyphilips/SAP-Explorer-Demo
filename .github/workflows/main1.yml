@@ -32,7 +32,11 @@ jobs:
 
       - name: Build JAR
         run: |
+          cd my-repo
+          ls -xlt
+          pwd
           cd backend/sap_explorer
+          ls -xlt
           mvn clean package -DskipTests
         #working-directory: $(pwd)/backend/sap-explorer
 
