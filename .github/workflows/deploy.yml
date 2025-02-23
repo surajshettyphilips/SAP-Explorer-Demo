@@ -74,8 +74,8 @@ jobs:
           docker build -t sapexplorer:latest .
           docker images
           echo ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}/sapexplorer:latest
-          docker tag sapexplorer:latest  ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}/sapexplorer:latest
-          docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}/sapexplorer:latest
+          docker tag sapexplorer:latest  ${{ secrets.ECR_REGISTRY }}/sapexplorer:latest
+          docker push ${{ secrets.ECR_REGISTRY }}/sapexplorer:latest
 
   
       - name: Apply Kubernetes Manifests
