@@ -72,6 +72,9 @@ jobs:
           pwd
           cd backend/sap_explorer
           docker build -t sapexplorer:latest .
+          docker images
+          echo ${{ secrets.AWS_ECR_URI }}
+          docker tag my-app:latest ${{ secrets.AWS_ECR_URI }}/sapexplorer:latest
           docker push ${{ secrets.AWS_ECR_URI }}/sapexplorer:latest
 
   
