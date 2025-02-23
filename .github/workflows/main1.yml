@@ -25,9 +25,7 @@ jobs:
           cache: 'maven'
 
       - name: Build JAR
-        run: |
-          cd ./backend/sap-explorer
-          mvn clean package -DskipTests
+        run: mvn clean package -DskipTests
         working-directory: my-repo/backend/sap-explorer
 
       - name: Configure AWS Credentials
