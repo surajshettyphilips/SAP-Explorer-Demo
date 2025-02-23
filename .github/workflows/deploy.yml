@@ -46,7 +46,6 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         env:
           AWS_DEFAULT_REGION:
-          AWS_REGION:
           AWS_ACCESS_KEY_ID:
           AWS_SECRET_ACCESS_KEY:
           AWS_SESSION_TOKEN:
@@ -58,6 +57,8 @@ jobs:
 
       - name: Login to AWS ECR
         run: |
+          echo ${{ env.AWS_ACCESS_KEY_ID }}
+          echo ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ECR_URI }}
 
       - name: Build and Push Docker Image
