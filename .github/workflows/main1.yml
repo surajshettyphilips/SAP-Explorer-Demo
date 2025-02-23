@@ -9,21 +9,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-            fetch-depth: 0 
+          path: my-repo
+      
+      - name: Verify Directory Structure
+        run: ls -R my-repo
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'maven'
 
       - name: Build JAR
         run: |
-          cd backend/sap-explorer
+          cd ./backend/sap-explorer
           mvn clean package -DskipTests
+        working-directory: my-repo/backend/sap-explorer
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
