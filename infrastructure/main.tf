@@ -56,11 +56,7 @@ resource "aws_route_table_association" "subnet_3_association" {
   subnet_id      = aws_subnet.subnet_3.id
   route_table_id = aws_route_table.route_table.id
 }
-# Create an ECR repository
 
-#resource "aws_ecr_repository" "app_ecr_repo" {
-#  name = "app-repo"
-#}
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"

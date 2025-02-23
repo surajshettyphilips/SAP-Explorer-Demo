@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: sapexplorer
-          image: sapexplorer:latest
-          imagePullPolicy: Never
-          #image: ${{ secrets.AWS_ECR_URI }}/spring-reactive:latest
+          #--image: sapexplorer:latest
+          #--imagePullPolicy: Never
+          image: ${{ secrets.AWS_ECR_URI }}/sapexplorer:latest
           ports:
             - containerPort: 8080
       imagePullSecrets:

@@ -1,9 +1,6 @@
-provider "aws" {
-  region = var.aws_region
-}
 
-resource "aws_ecr_repository" "spring_reactive" {
-  name                 = "spring-reactive"
+resource "aws_ecr_repository" "aws_ecr_demo_repo" {
+  name                 = "aws_ecr_demo_repo"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -12,5 +9,5 @@ resource "aws_ecr_repository" "spring_reactive" {
 }
 
 output "ecr_repository_url" {
-  value = aws_ecr_repository.spring_reactive.repository_url
+  value = aws_ecr_repository.aws_ecr_demo_repo.repository_url
 }
