@@ -9,19 +9,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      
+
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          path: my-repo
+      
+      - name: Verify Directory Structure
+        run: |
+         ls -R my-repo
+         pwd
+         echo "===================================="
+         cd my-repo
+         pwd
+         ls -xlt
 
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'maven'
 
       - name: Build JAR
         run: |
-          cd backend/sap-explorer
+          cd my-repo
+          ls -xlt
+          pwd
+          cd backend/sap_explorer
           mvn clean package -DskipTests
+        #working-directory: $(pwd)/backend/sap-explorer
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -39,19 +57,10 @@ jobs:
           docker build -t ${{ secrets.AWS_ECR_URI }}/sapexplorer:latest .
           docker push ${{ secrets.AWS_ECR_URI }}/sapexplorer:latest
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Configure Kubernetes
-        run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
-
+  
       - name: Apply Kubernetes Manifests
-        run: kubectl apply -f k8s/
+        run: |
+          cd my-repo
+          ls -xlt
+          pwd
+          kubectl apply -f k8s/
