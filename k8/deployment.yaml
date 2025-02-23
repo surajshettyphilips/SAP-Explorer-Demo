@@ -16,7 +16,7 @@ spec:
         - name: sapexplorer
           #--image: sapexplorer:latest
           #--imagePullPolicy: Never
-          image: ${{ secrets.AWS_ECR_URI }}/sapexplorer:latest
+          image: ${{ secrets.ECR_REGISTRY  }}/sapexplorer:latest
           ports:
             - containerPort: 8080
       imagePullSecrets:
