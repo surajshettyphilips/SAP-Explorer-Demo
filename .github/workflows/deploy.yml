@@ -67,13 +67,14 @@ jobs:
 
       - name: Build and Push Docker Image
         env:
-          IMAGE_TAG: sapexplorer:latest
+          IMAGE_TAG: sapexplorer
         run: |
           cd my-repo
           ls -xlt
           pwd
           cd backend/sap_explorer
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f docker/Dockerfile .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG  .
+          docker images
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
   
