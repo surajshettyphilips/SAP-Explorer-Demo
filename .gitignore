@@ -43,3 +43,4 @@ docker-compose.override.yml
 Thumbs.db
 /.aws
 cmds.md
+compose.yaml
