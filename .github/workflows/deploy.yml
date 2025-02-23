@@ -73,14 +73,15 @@ jobs:
           ls -xlt
           pwd
           cd backend/sap_explorer
+          echo $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG  .
           docker images
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          #docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
   
-      - name: Apply Kubernetes Manifests
-        run: |
-          cd my-repo
-          ls -xlt
-          pwd
-          kubectl apply -f k8/
+      #- name: Apply Kubernetes Manifests
+      #  run: |
+      #    cd my-repo
+      #    ls -xlt
+      #    pwd
+      #    kubectl apply -f k8/
