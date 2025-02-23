@@ -9,18 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: make directory 
-        run: |
-         mkdir /my-repo
-         pwd
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          path: /my-repo
+          path: my-repo
       
       - name: Verify Directory Structure
         run: |
          ls -R my-repo
+         pwd
+         echo "===================================="
+         cd my-repo
          pwd
 
       - name: Set up JDK
